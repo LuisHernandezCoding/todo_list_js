@@ -8,6 +8,8 @@ A to-do list application that allows users to create, view, and manage their tas
 ![28f598fb43d0b412d1bfff3f09274677](https://user-images.githubusercontent.com/112588805/210731732-658e6949-d377-4920-bfc8-dedd07a3e519.png)
 ![ebc5151214cc44ef1f485bc1e005df3a](https://user-images.githubusercontent.com/112588805/210731745-35163c8d-6036-4da7-8bae-742bed456cd1.png)
 
+## Live Demo
+[Live Demo Link](https://luishernandezcoding.github.io/todo_list_js/)
 
 ## Long Description
 This to-do list application allows users to create and manage their tasks and projects in a simple and intuitive interface. Users can create new projects and add tasks to them, as well as edit and delete tasks as needed. The app also features a priority system, where tasks can be marked as high, medium, or low priority.
