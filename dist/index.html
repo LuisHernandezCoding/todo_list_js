@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo - List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body class="transition">
+  <div class="hero is-link">
+    <div class="hero-body" id="content">
+      <div class="container">
+        <br>
+        <h1 class="title is-1 has-text-centered">ToDo - List</h1>
+        <h2 class="subtitle is-3 has-text-centered">A simple ToDo List</h2>
+        <p class="subtitle has-text-centered">This is a simple ToDo List made with HTML, CSS, JavaScript and Webpack.</p>
+        <div class="columns is-centered">
+          <div id="projects" class="column is-one-third">
+            <div class="box">
+              <div class="field">
+                <table class="table is-fullwidth is-hoverable" id="tableProjects">
+                  <thead>
+                    <tr>
+                      <th width="70%">Projects</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="tableProjectsBody"></tbody>
+                </table>
+                <button class="button is-small is-success js-modal-trigger" data-target="new-project" id="btnCreateProject">New Project</button>
+              </div>
+            </div>
+          </div>
+          <div id="tasks" class="column is-two-third">
+            <div class="box">
+              <h4 class="title is-4 has-text-danger has-text-centered" id="tasksTitle">No Project Selected</h4>
+              <hr>
+              <h6 class="title is-6 has-text-danger" id="tasksSubtitle">Pending Tasks</h6>
+              <div id="tasksList" class="is-hidden has-text-grey"></div>
+              <hr class="is-hidden" id="tasksSeparator">
+              <h6 class="is-hidden title is-6 has-text-success" id="tasksCompletedSubtitle">Completed Tasks</h6>
+              <div id="tasksCompletedList" class="is-hidden has-text-grey"></div>
+              <hr>
+              <div class="buttons is-right is-hidden" id="tasksButtons">
+                <button class="button is-small is-success js-modal-trigger" data-target="new-task" id="btnCreateTask">New Task</button>
+                <button class="button is-small is-danger" id="btnClearCompletedTasks">Clear Completed Tasks</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>To-Do List</strong> by <a href="https://github.com/LuisHernandezCoding">Luis Hernandez</a>.
+      </p>
+      <p>
+        <strong>Source Code</strong> on <a href="https://github.com/LuisHernandezCoding/todo_list_js">GitHub</a>.
+      </p>
+    </div>
+  <div id="new-project" class="modal">
+    <div class="modal-background"></div>
+  
+    <div class="modal-content">
+      <div class="box">
+        <div class="field">
+          <label class="label" id="labelProjectName">
+            Project Name
+            <span class="has-text-danger is-size-7 is-hidden" id="helpProjectName"></span>
+          </label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Project Name" id="inputProjectName">
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" id="btnCreateProject">Create Project</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light js-modal-close">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+  <div id="new-task" class="modal">
+    <div class="modal-background"></div>
+  
+    <div class="modal-content">
+      <div class="box">
+        <div class="field">
+          <label class="label" id="labelTaskName">
+            Task Name
+            <span class="has-text-danger is-size-7 is-hidden" id="helpTaskName"></span>
+          </label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Task Name" id="inputTaskName">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" id="labelTaskDescription">
+            Task Description
+            <span class="has-text-danger is-size-7 is-hidden" id="helpTaskDescription"></span>
+          </label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Task Description" id="inputTaskDescription"></textarea>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <label class="label" id="labelTaskDueDate">
+              Due Date
+              <span class="has-text-danger is-size-7 is-hidden" id="helpTaskDueDate"></span>
+            </label>
+            <input class="input" type="date" id="inputTaskDueDate">
+            <script>
+              imputTaskDueDate = document.getElementById('inputTaskDueDate');
+              imputTaskDueDate.valueAsDate = new Date();
+              inputTaskDueDate.min = new Date().toISOString().split("T")[0];
+            </script>
+          </div>
+          <div class="control">
+            <label class="label" id="labelTaskPriority">
+              Priority
+              <span class="has-text-danger is-size-7 is-hidden" id="helpTaskPriority"></span>
+            </label>
+            <div class="select">
+              <select id="inputTaskPriority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+          </div>
+          <div class="control">
+            <label class="label" id="labelTaskCategory">
+              Category
+              <span class="has-text-danger is-size-7 is-hidden" id="helpTaskCategory"></span>
+            </label>
+            <div class="select">
+              <select id="inputTaskCategory">
+                <option value="Work">Work</option>
+                <option value="School">School</option>
+                <option value="Personal">Personal</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Health">Health</option>
+                <option value="Travel">Travel</option>
+                <option value="Home">Home</option>
+                <option value="Hobby">Hobby</option>
+                <option value="Finance">Finance</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" id="btnCreateTask">Create Task</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light js-modal-close">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+  <script src="bundle.js"></script>
+</body>
+</html>
