@@ -1,0 +1,75 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+.navbar-item.is-mega {
+  position: static;
+}
+
+.navbar-item.is-mega .is-mega-menu-title {
+  margin-bottom: 0;
+  padding: 0.375rem 1rem;
+}
+
+.slide-up {
+  animation: zoomAndSlideDown 0.5s ease-in-out;
+  background-color: #f5f5f5;
+}
+
+.slide-down {
+  animation: zoomAndSlideUp 0.5s ease-in-out;
+}
+
+.is-not-rotated {
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(0deg);
+}
+
+.is-rotated {
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(180deg);
+}
+
+@keyframes zoomAndSlideDown {
+  0% {
+    transform: translateY(-150%) translateX(50%) scaleX(0.01) scaleY(0) rotate(90deg);
+  }
+
+  100% {
+    transform: translateY(0%) translateX(0%) scaleX(1) scaleY(1) rotate(0deg);
+  }
+}
+
+@keyframes zoomAndSlideUp {
+  0% {
+    transform: translateY(0%) translateX(0%) scaleX(1) scaleY(1) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(-150%) translateX(50%) scaleX(0) scaleY(0) rotate(90deg);
+  }
+}
+
+.tag {
+  transition: transform 0.5s ease;
+}
+
+.button {
+  transition: transform 0.5s ease;
+}
+
+.tag:hover,
+.button:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+p.wrap-text {
+  white-space: pre-wrap;
+}
+
+#btnTaskStatus .fa-check {
+  color: transparent;
+}
+
+#btnTaskStatus:hover .fa-check,
+#btnTaskStatus.is-checked .fa-check {
+  color: #fff !important;
+}
